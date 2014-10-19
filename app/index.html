@@ -1,4 +1,3 @@
-<!doctype html>
 <html class="no-js">
     <head>
         <meta charset="utf-8">
@@ -22,33 +21,97 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div class="hero-unit">
-            <h1>'Allo, 'Allo!</h1>
-            <p>You now have</p>
-            <ul>
-                <li>HTML5 Boilerplate</li>
-                <li>Sass</li>
-            </ul>
-        </div>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
+
+<script type="text/x-handlebars" data-template-name="application">
+    <header>
+        <div id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h1>Trailblazr</h1>
+    </header>
+    {{outlet}}
+</script>
+
+
+<script type="text/x-handlebars" data-template-name="index">
+    <div id="map-canvas"></div>
+    {{#link-to 'active'}}<div class="blaze-btn">Blaze</div>{{/link-to}}
+</script>
+
+
+<script type="text/x-handlebars" data-template-name="active">
+    <div id="map-canvas"></div>
+    <div class="timer">
+        <h2><time>0:00:00</time></h2>
+    </div>
+    <div class="timer">
+        <h2><time>0:00:00</time></h2>
+    </div><br>
+    <div class='btn-green' id="start">
+      Lap
+    </div>
+    <div class='btn-red' id="stop">
+      Stop
+    </div>
+</script>
+
+
+<script type="text/x-handlebars" data-template-name="Post">
+  <div id="map-canvas"></div>
+  <div class="final-time">
+      <h3>{{posttime}}<h3>
+  </div>
+  <div class="name-field">
+    <input type="text" placeholder="Name">
+  </div>
+  <div class="start-field">
+    <input type="text" placeholder"Start">
+  </div>
+  <div class="finish-field">
+    <input type="text" placeholder="Finish">
+  </div>
+  <div class="comment-area">
+    <textarea name="textarea" rows="10" cols="50" placeholder="Write a comment"></textarea>
+  </div>
+  <div class="submit">
+    <button class="save">SAVE</button>
+  </div>
+</script>
+
+<script type='text/x-handlebars' data-template-name='registration'>
+  <div class='registration-container'>
+    {{input class='registration' type='text' value=email placeholder='Email'}}<br>
+    {{input class='registration' type='password' value=password placeholder='Password'}}<br>
+    {{input class='registration' type='text' value=name placeholder='Name (Optional)'}}<br>
+    <div class='btn-sign-up'>Sign Up</div>
+  </div>
+</script>
+
+
+
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/firebase/firebase.js"></script>
+        <script src="bower_components/handlebars/handlebars.js"></script>
+        <script src="bower_components/ember/ember.js"></script>
+        <script src="bower_components/ember-data/index.js"></script>
+        <script src="bower_components/emberfire/dist/emberfire.min.js"></script>
+        <script src="bower_components/rsvp/rsvp.js"></script>
+        <script src="bower_components/geofire/dist/geofire.min.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
         <!-- build:js scripts/main.js -->
+        <script src="scripts/map.js"></script>
         <script src="scripts/main.js"></script>
+        <script src="scripts/timer.js"></script>
         <!-- endbuild -->
 </body>
 </html>
